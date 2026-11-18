@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="马一先（M1xqq）个人介绍 — 上海工程技术大学电子信息类，软件开发与机械结构方向，地瓜机器人黑客松参赛队员。">
+<title>马一先 M1xqq ｜ 个人介绍</title>
+<style>
+  :root{
+    --bg:#f5f7fa; --card:#ffffff; --ink:#1b2430; --ink-2:#4b5768; --ink-3:#7c8797;
+    --line:#e3e8ef; --accent:#2563eb; --accent-soft:#eff4ff; --teal:#0f766e;
+    --teal-soft:#eaf6f4; --amber:#b45309; --amber-soft:#fff5e8;
+    --shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px rgba(16,24,40,.05);
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:20;background:rgba(245,247,250,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+  .brand{font-weight:700;letter-spacing:.02em;font-size:15px}
+  .brand span{color:var(--ink-3);font-weight:500;margin-left:8px;font-size:13px}
+  .navlinks{display:flex;gap:22px;font-size:13px;color:var(--ink-2)}
+  .navlinks a:hover{color:var(--accent)}
+  @media(max-width:640px){.navlinks{display:none}}
+
+  /* hero */
+  header.hero{padding:64px 0 44px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--accent-soft);color:var(--accent);
+    font-size:12px;font-weight:600;letter-spacing:.06em;padding:6px 12px;border-radius:999px}
+  .eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--accent);display:block}
+  h1{font-size:clamp(38px,7vw,60px);line-height:1.15;letter-spacing:-.02em;margin:22px 0 6px;font-weight:750}
+  h1 small{font-size:.42em;font-weight:600;color:var(--ink-3);letter-spacing:.04em;margin-left:14px;vertical-align:middle}
+  .sub{font-size:17px;color:var(--ink-2);margin-top:10px}
+  .lead{margin-top:22px;max-width:660px;color:var(--ink-2);font-size:15px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+  .tag{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;color:var(--ink-2)}
+  .tag b{color:var(--ink);font-weight:600}
+
+  /* sections */
+  section{padding:36px 0}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:20px}
+  .sec-num{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.12em;font-variant-numeric:tabular-nums}
+  h2{font-size:22px;letter-spacing:-.01em;font-weight:700}
+  .sec-note{font-size:13px;color:var(--ink-3);margin-left:auto}
+  @media(max-width:640px){.sec-note{display:none}}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px}
+  .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:720px){.grid-2,.grid-3{grid-template-columns:1fr}}
+
+  .stack-item{display:flex;flex-direction:column;gap:10px}
+  .stack-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .stack-name{font-weight:650;font-size:15px}
+  .badge{font-size:11px;font-weight:650;padding:3px 9px;border-radius:6px;white-space:nowrap}
+  .b-main{background:var(--accent-soft);color:var(--accent)}
+  .b-help{background:var(--teal-soft);color:var(--teal)}
+  .b-learn{background:var(--amber-soft);color:var(--amber)}
+  .stack-desc{font-size:13.5px;color:var(--ink-2);line-height:1.65}
+  .bar{height:4px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:auto}
+  .bar>i{display:block;height:100%;border-radius:99px;background:var(--accent)}
+  .bar.t>i{background:var(--teal)} .bar.l>i{background:var(--amber)}
+
+  .timeline{position:relative;padding-left:22px}
+  .timeline::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:var(--line)}
+  .tl-item{position:relative;padding:0 0 20px 6px}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{content:"";position:absolute;left:-21px;top:9px;width:9px;height:9px;border-radius:50%;background:var(--card);border:2px solid var(--accent)}
+  .tl-title{font-weight:650;font-size:15px}
+  .tl-meta{font-size:12px;color:var(--ink-3);margin-bottom:3px}
+  .tl-desc{font-size:13.5px;color:var(--ink-2)}
+
+  .work{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--line)}
+  .work:last-child{border-bottom:0;padding-bottom:0}
+  .work:first-child{padding-top:0}
+  .work-idx{flex:0 0 34px;height:34px;border-radius:10px;background:var(--accent-soft);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+  .work-title{font-weight:650;font-size:15px}
+  .work-desc{font-size:13.5px;color:var(--ink-2);margin-top:3px}
+  .work-kind{font-size:11px;color:var(--ink-3);border:1px solid var(--line);border-radius:5px;padding:2px 7px;margin-left:8px;vertical-align:2px}
+
+  .focus{background:linear-gradient(135deg,#ffffff 0%,#f2f7ff 100%);border:1px solid #dbe6fb}
+  .focus h3{font-size:17px;margin-bottom:8px}
+  .focus p{font-size:14px;color:var(--ink-2)}
+  .kv{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+  .kv div{background:rgba(255,255,255,.75);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .kv dt{font-size:11px;color:var(--ink-3);letter-spacing:.04em}
+  .kv dd{font-size:14px;font-weight:650;margin-top:3px}
+  @media(max-width:640px){.kv{grid-template-columns:1fr}}
+
+  .chips{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 16px;font-size:14px;color:var(--ink-2)}
+
+  footer{border-top:1px solid var(--line);padding:28px 0 40px;margin-top:20px;color:var(--ink-3);font-size:13px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+  footer a{color:var(--accent)}
+  .links{display:flex;gap:18px;flex-wrap:wrap}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+  @media print{
+    body{background:#fff} nav{display:none} header.hero{padding:24px 0}
+    .card,.focus{box-shadow:none;break-inside:avoid} section{padding:18px 0}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">马一先<span>M1xqq</span></div>
+    <div class="navlinks">
+      <a href="#about">关于</a><a href="#stack">技术栈</a><a href="#campus">校园</a>
+      <a href="#works">作品</a><a href="#focus">本次赛事</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><i></i>地瓜机器人黑客松 · 参赛队员</div>
+    <h1>马一先<small>M1xqq</small></h1>
+    <p class="sub">上海工程技术大学 · 电子信息类 · 2026 级</p>
+    <p class="lead">队内分工以软件开发与机械结构为主：写网页与演示 demo、做 Fusion360 建模和 3D 打印，把想法落到能跑、能拿在手里的东西。正在补 RDK 开发板与端侧 AI 这一块。</p>
+    <div class="tags">
+      <span class="tag"><b>软件开发</b> · 网站 / demo</span>
+      <span class="tag"><b>机械结构</b> · 建模 / 3D 打印</span>
+      <span class="tag">AI 辅助开发</span>
+      <span class="tag">上海</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="about" class="reveal">
+    <div class="sec-head"><span class="sec-num">01</span><h2>关于我</h2><span class="sec-note">Profile</span></div>
+    <div class="card">
+      <p style="font-size:14.5px;color:var(--ink-2)">
+        2026 年入学上海工程技术大学，电子信息类大一，任电子信息类四班班长。日常在课程之外主要做两件事：一是写代码、做展示页和自动化小工具，把想法快速跑通；二是把设计变成能拿在手里的东西，做建模、打印、装配和迭代。
+      </p>
+      <p style="font-size:14.5px;color:var(--ink-2);margin-top:12px">
+        在校内参与学术实践中心与 Nextus 竞赛工作室的工作，承担活动组织与技术支持。当前正和队友一起准备 12 月的地瓜机器人黑客松，目标是 48 小时内做出一件能现场跑起来的实物作品。
+      </p>
+    </div>
+  </section>
+
+  <section id="stack" class="reveal">
+    <div class="sec-head"><span class="sec-num">02</span><h2>我能负责什么</h2><span class="sec-note">对照报名技术栈</span></div>
+    <div class="grid-3">
+      <div class="card stack-item">
+        <div class="stack-top"><span class="stack-name">软件开发</span><span class="badge b-main">可独立负责</span></div>
+        <p class="stack-desc">vibe coding、网站与域名开发、演示页与 demo 快速搭建，以及 AI 辅助开发过程留痕。</p>
+        <div class="bar"><i style="width:88%"></i></div>
+      </div>
+      <div class="card stack-item">
+        <div class="stack-top"><span class="stack-name">机械结构</span><span class="badge b-main">可独立负责</span></div>
+        <p class="stack-desc">Fusion360 建模、AI 辅助建模、3D 打印结构件设计与打样。</p>
+        <div class="bar"><i style="width:82%"></i></div>
+      </div>
+      <div class="card stack-item">
+        <div class="stack-top"><span class="stack-name">产品设计</span><span class="badge b-help">可协助</span></div>
+        <p class="stack-desc">产品与演示页面、界面呈现、展示物料；主力由队内产品统筹同学承担。</p>
+        <div class="bar t"><i style="width:62%"></i></div>
+      </div>
+      <div class="card stack-item">
+        <div class="stack-top"><span class="stack-name">算法 / 模型</span><span class="badge b-help">协助 · 需带</span></div>
+        <p class="stack-desc">AI 建模与端侧模型调用、推理 demo；RDK 实机部署正在上手。</p>
+        <div class="bar t"><i style="width:48%"></i></div>
+      </div>
+      <div class="card stack-item">
+        <div class="stack-top"><span class="stack-name">嵌入式</span><span class="badge b-learn">学习中</span></div>
+        <p class="stack-desc">先从烧录、接线、外设调试做起，跟随队内嵌入式方向同学学习。</p>
+        <div class="bar l"><i style="width:34%"></i></div>
+      </div>
+      <div class="card stack-item">
+        <div class="stack-top"><span class="stack-name">硬件电路</span><span class="badge b-learn">学习中</span></div>
+        <p class="stack-desc">配合硬件方向同学完成联调，暂不独立承担电路设计。</p>
+        <div class="bar l"><i style="width:30%"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="campus" class="reveal">
+    <div class="sec-head"><span class="sec-num">03</span><h2>校园角色与经历</h2><span class="sec-note">Campus</span></div>
+    <div class="grid-2">
+      <div class="card timeline">
+        <div class="tl-item">
+          <div class="tl-meta">2026 – 至今 · 上海工程技术大学</div>
+          <div class="tl-title">电子信息类四班班长</div>
+          <div class="tl-desc">电子信息类大一，大一下专业分流。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-meta">学术实践中心 · 学术部</div>
+          <div class="tl-title">干事 / 薪火杯辩论赛主持</div>
+          <div class="tl-desc">负责每周二 18:30–19:30 的赛事主持工作。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-meta">Nextus 竞赛工作室</div>
+          <div class="tl-title">社团成员 · 竞赛团队核心成员</div>
+          <div class="tl-desc">参与社团与团队事务、活动组织，如「创客之夜」。</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-meta">2026.11</div>
+          <div class="tl-title">爱菊小学「一纸千年」研学营</div>
+          <div class="tl-desc">负责技术工作。</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="sec-head" style="margin-bottom:14px"><h2 style="font-size:16px">可佐证的学术经历</h2></div>
+        <div class="work">
+          <div class="work-idx">01</div>
+          <div>
+            <div class="work-title">中学生英才计划 2024 级<span class="work-kind">华东师大 · 物理</span></div>
+            <div class="work-desc">导师方俊锋，2024.12 结业；课题《高效稳定倒置钙钛矿太阳能电池的制备》，后续获闵行区研究性学习成果评选一等奖（2025.8）。</div>
+          </div>
+        </div>
+        <div class="work">
+          <div class="work-idx">02</div>
+          <div>
+            <div class="work-title">第 39 届中国化学奥林匹克（初赛）三等奖<span class="work-kind">2025.10</span></div>
+            <div class="work-desc">学科竞赛佐证。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="works" class="reveal">
+    <div class="sec-head"><span class="sec-num">04</span><h2>作品与佐证</h2><span class="sec-note">Works</span></div>
+    <div class="card">
+      <div class="work">
+        <div class="work-idx">01</div>
+        <div>
+          <div class="work-title">HTML 自我介绍网页<span class="work-kind">本页</span></div>
+          <div class="work-desc">原生 HTML / CSS / JS 写的单页静态站点，含响应式布局与打印样式，无框架、无外部依赖；源码与提交记录见代码仓库。</div>
+        </div>
+      </div>
+      <div class="work">
+        <div class="work-idx">02</div>
+        <div>
+          <div class="work-title">GitHub 代码仓库<span class="work-kind">可分享</span></div>
+          <div class="work-desc">本页源码与说明文档，含完整提交记录，可作为报名表中的项目佐证链接：<a href="https://github.com/M1xqq/self-intro" style="color:var(--accent)" target="_blank" rel="noopener">github.com/M1xqq/self-intro</a></div>
+        </div>
+      </div>
+      <div class="work">
+        <div class="work-idx">03</div>
+        <div>
+          <div class="work-title">Fusion360 建模与 3D 打印<span class="work-kind">结构件</span></div>
+          <div class="work-desc">第一个建模 demo：圆柱体与正方体组合体；后续用于赛前结构打样。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="focus" class="reveal">
+    <div class="sec-head"><span class="sec-num">05</span><h2>正在准备</h2><span class="sec-note">Current</span></div>
+    <div class="card focus">
+      <h3>首届地瓜机器人黑客松 · 48H 和真实世界碰一碰</h3>
+      <p>2026 年 12 月 5–7 日，上海张江科学会堂，全程线下。开放主题、不分赛道，作品须以地瓜 RDK 为核心计算平台，并展示 AI 辅助开发的实际使用路径；现场演示可运行的实物，评审看活动期间新增的工作。</p>
+      <p style="margin-top:10px">我这边负责软件开发与机械结构，同时在通览 RDK X5 的官方文档、入门课程与现成 Demo，补齐开发板基础。</p>
+      <dl class="kv">
+        <div><dt>队内分工</dt><dd>软件 / 机械结构</dd></div>
+        <div><dt>报名截止</dt><dd>2026.11.30</dd></div>
+        <div><dt>开发工具</dt><dd>RDK X5 · Fusion 360</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="sec-head"><span class="sec-num">06</span><h2>课外的我</h2><span class="sec-note">Interests</span></div>
+    <div class="chips">
+      <span class="chip">中医</span><span class="chip">道家玄学体系</span><span class="chip">足球</span><span class="chip">军模</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 马一先 · 本页用于队伍报名与项目佐证</div>
+    <div class="links">
+      <a href="https://m1xqq.github.io/self-intro/" target="_blank" rel="noopener">在线地址</a>
+      <a id="repo-link" href="https://github.com/M1xqq/self-intro" target="_blank" rel="noopener">本页源码仓库</a>
+      <a href="https://gitee.com/hzjhzjhzjhzj" target="_blank" rel="noopener">Gitee 主页</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
