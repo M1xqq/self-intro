@@ -1,318 +1,684 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-motion>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="马一先（M1xqq）个人介绍 — 上海工程技术大学电子信息类，软件开发、机械结构与产品设计方向，地瓜机器人黑客松参赛队员。">
-<title>马一先 M1xqq ｜ 个人介绍</title>
+<title>马一先 M1xqq ｜ 个人介绍与作品</title>
+<meta name="description" content="马一先（M1xqq），上海工程技术大学电子信息类 2026 级。软件开发、机械结构、产品设计。三个可在线体验的真实项目：创想空间、一纸千年、奶龙大笑模拟器。">
+<meta property="og:title" content="马一先 M1xqq ｜ 个人介绍与作品">
+<meta property="og:description" content="上海工程技术大学电子信息类 2026 级。写网页、做结构、把想法做成能跑能拿在手里的东西。">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#f7f5f0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23a8402a'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='19' fill='%23f7f5f0' text-anchor='middle'%3E%E9%A9%AC%3C/text%3E%3C/svg%3E">
 <style>
   :root{
-    --bg:#f5f7fa; --card:#ffffff; --ink:#1b2430; --ink-2:#4b5768; --ink-3:#7c8797;
-    --line:#e3e8ef; --accent:#2563eb; --accent-soft:#eff4ff; --teal:#0f766e;
-    --teal-soft:#eaf6f4; --amber:#b45309; --amber-soft:#fff5e8;
-    --shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px rgba(16,24,40,.05);
-    --radius:16px;
+    --paper:#f7f5f0;
+    --paper-2:#efece4;
+    --card:#fffdf8;
+    --ink:#171a1d;
+    --ink-2:#4c5158;
+    --ink-3:#8b9096;
+    --line:#e0dad0;
+    --line-2:#cfc8bc;
+    --accent:#a8402a;
+    --accent-soft:#f3e7e3;
+    --serif:"Songti SC","STSong","Noto Serif SC","Source Han Serif SC","SimSun",Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --ease:cubic-bezier(.2,.8,.2,1);
+    --ease-enter:cubic-bezier(.22,1,.36,1);
+    --max:1180px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;scroll-padding-top:0}
   body{
-    background:var(--bg); color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-    line-height:1.7; -webkit-font-smoothing:antialiased;
+    background:var(--paper);color:var(--ink);
+    font-family:var(--sans);line-height:1.75;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
   }
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+  img{display:block;max-width:100%}
+  .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 40px}
+  @media(max-width:768px){.wrap{padding:0 24px}}
 
-  /* nav */
-  nav{position:sticky;top:0;z-index:20;background:rgba(245,247,250,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
-  .brand{font-weight:700;letter-spacing:.02em;font-size:15px}
-  .brand span{color:var(--ink-3);font-weight:500;margin-left:8px;font-size:13px}
-  .navlinks{display:flex;gap:22px;font-size:13px;color:var(--ink-2)}
-  .navlinks a:hover{color:var(--accent)}
-  @media(max-width:640px){.navlinks{display:none}}
+  /* ---------- nav ---------- */
+  .nav{
+    position:fixed;inset:0 0 auto 0;z-index:50;height:72px;
+    display:flex;align-items:center;
+    background:rgba(247,245,240,0);backdrop-filter:blur(0);
+    border-bottom:1px solid transparent;
+    transition:background .3s var(--ease),border-color .3s var(--ease),backdrop-filter .3s var(--ease);
+  }
+  .nav.is-stuck{background:rgba(247,245,240,.9);border-bottom-color:var(--line);backdrop-filter:blur(14px)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .brand{font-family:var(--serif);font-size:17px;letter-spacing:.04em;font-weight:600}
+  .brand span{font-family:var(--sans);font-size:12px;letter-spacing:.14em;color:var(--ink-3);margin-left:10px;text-transform:uppercase}
+  .nav-links{display:flex;gap:30px;font-size:14px;color:var(--ink-2)}
+  .nav-links a{position:relative;padding-bottom:4px;transition:color .15s var(--ease)}
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;
+    background:currentColor;transform:scaleX(0);transform-origin:left;
+    transition:transform .18s var(--ease);
+  }
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a:hover::after{transform:scaleX(1)}
+  @media(max-width:820px){.nav-links{display:none}}
 
-  /* hero */
-  header.hero{padding:64px 0 44px}
-  .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--accent-soft);color:var(--accent);
-    font-size:12px;font-weight:600;letter-spacing:.06em;padding:6px 12px;border-radius:999px}
-  .eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--accent);display:block}
-  h1{font-size:clamp(38px,7vw,60px);line-height:1.15;letter-spacing:-.02em;margin:22px 0 6px;font-weight:750}
-  h1 small{font-size:.42em;font-weight:600;color:var(--ink-3);letter-spacing:.04em;margin-left:14px;vertical-align:middle}
-  .sub{font-size:17px;color:var(--ink-2);margin-top:10px}
-  .lead{margin-top:22px;max-width:660px;color:var(--ink-2);font-size:15px}
-  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
-  .tag{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;color:var(--ink-2)}
-  .tag b{color:var(--ink);font-weight:600}
+  /* ---------- hero ---------- */
+  .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:120px 0 80px;position:relative}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 236px;gap:clamp(40px,6vw,88px);align-items:end}
+  .hero-main{min-width:0}
+  .hero-aside{border-top:1px solid var(--line-2);padding-top:22px;min-width:0}
+  .hero-emblem{
+    width:58px;height:58px;border:1px solid var(--line-2);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-size:22px;color:var(--accent);margin-bottom:20px;
+  }
+  .hero-aside .hfact{display:flex;align-items:baseline;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+  .hero-aside .hfact b{font-family:var(--serif);font-size:30px;font-weight:700;line-height:1;min-width:1.7em}
+  .hero-aside .hfact span{font-size:13px;color:var(--ink-2);line-height:1.5}
+  .hero-scroll{
+    position:absolute;right:max(40px,calc((100vw - var(--max))/2 + 40px));bottom:40px;
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    font-size:10.5px;letter-spacing:.22em;color:var(--ink-3);
+  }
+  .hero-scroll .line{display:block;width:1px;height:40px;background:linear-gradient(var(--ink-3),transparent);animation:drop 2.4s var(--ease) infinite}
+  @keyframes drop{0%,100%{opacity:.2;transform:translateY(-7px)}50%{opacity:.9;transform:translateY(7px)}}
 
-  /* sections */
-  section{padding:36px 0}
-  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:20px}
-  .sec-num{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.12em;font-variant-numeric:tabular-nums}
-  h2{font-size:22px;letter-spacing:-.01em;font-weight:700}
-  .sec-note{font-size:13px;color:var(--ink-3);margin-left:auto}
+  @media(max-width:1080px){
+    .hero-grid{grid-template-columns:minmax(0,1fr);gap:52px;align-items:start}
+    .hero-aside{display:flex;flex-wrap:wrap;border-top:0;padding-top:0;align-items:flex-end}
+    .hero-emblem{margin-bottom:0;margin-right:8px}
+    .hero-aside .hfact{flex:1 1 150px;border-top:1px solid var(--line-2);border-bottom:0;padding:18px 16px 0 0}
+  }
+  @media(max-width:768px){
+    .hero{padding:104px 0 72px;min-height:auto;justify-content:flex-start}
+    .hero-aside{display:block}
+    .hero-emblem{display:none}
+    .hero-aside .hfact{border-top:0;border-bottom:1px solid var(--line);padding:13px 0}
+    .hero-scroll{display:none}
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);
+  }
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--accent);display:block}
+  .hero-title{
+    font-family:var(--serif);font-weight:700;
+    font-size:clamp(56px,11vw,132px);line-height:1.02;letter-spacing:.01em;
+    margin:26px 0 0;
+  }
+  .hero-title .line{display:block;overflow:hidden;padding-bottom:.06em}
+  .hero-title .line > span{display:block}
+  .hero-title .latin{
+    font-family:var(--sans);font-weight:300;
+    font-size:clamp(15px,2.2vw,26px);letter-spacing:.42em;
+    color:var(--ink-3);text-transform:uppercase;margin-top:6px;
+  }
+  .hero-lead{
+    max-width:36em;margin-top:34px;overflow-wrap:break-word;
+    font-size:clamp(15px,1.35vw,18px);line-height:1.85;color:var(--ink-2);
+  }
+  .hero-lead b{color:var(--ink);font-weight:600}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 26px;
+    border-radius:2px;font-size:14.5px;font-weight:600;letter-spacing:.02em;
+    border:1px solid transparent;
+    transition:transform .15s var(--ease),background-color .15s var(--ease),
+               border-color .15s var(--ease),color .15s var(--ease);
+  }
+  .btn svg{width:15px;height:15px;transition:transform .15s var(--ease)}
+  .btn:hover{transform:translateY(-1px)}
+  .btn:active{transform:translateY(1px) scale(.985)}
+  .btn:hover svg{transform:translateX(3px)}
+  .btn-primary{background:var(--ink);color:var(--paper)}
+  .btn-primary:hover{background:#000}
+  .btn-ghost{border-color:var(--line-2);color:var(--ink)}
+  .btn-ghost:hover{background:var(--card);border-color:var(--ink-3)}
+
+  /* ---------- section shell ---------- */
+  .section{padding:clamp(96px,13vh,150px) 0}
+  .section + .section{padding-top:0}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:56px;border-bottom:1px solid var(--line);padding-bottom:20px}
+  .sec-num{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.18em;color:var(--accent)}
+  .sec-head h2{font-family:var(--serif);font-size:clamp(26px,3.2vw,38px);font-weight:700;letter-spacing:.01em;line-height:1.2}
+  .sec-note{margin-left:auto;font-size:12.5px;letter-spacing:.1em;color:var(--ink-3);text-transform:uppercase;white-space:nowrap}
   @media(max-width:640px){.sec-note{display:none}}
 
-  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px}
-  .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  @media(max-width:720px){.grid-2,.grid-3{grid-template-columns:1fr}}
+  /* ---------- about ---------- */
+  .about-grid{display:grid;grid-template-columns:1.35fr .85fr;gap:clamp(32px,6vw,80px);align-items:start}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:40px}}
+  .prose p{font-size:16px;line-height:1.95;color:var(--ink-2);max-width:34em}
+  .prose p + p{margin-top:22px}
+  .prose strong{color:var(--ink);font-weight:600}
+  .facts{display:grid;gap:0;border-top:1px solid var(--line)}
+  .fact{display:flex;justify-content:space-between;gap:20px;padding:16px 0;border-bottom:1px solid var(--line);font-size:14px}
+  .fact dt{color:var(--ink-3);white-space:nowrap;letter-spacing:.04em}
+  .fact dd{color:var(--ink);text-align:right;font-weight:500}
 
-  .stack-item{display:flex;flex-direction:column;gap:10px}
-  .stack-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
-  .stack-name{font-weight:650;font-size:15px}
-  .badge{font-size:11px;font-weight:650;padding:3px 9px;border-radius:6px;white-space:nowrap}
-  .b-main{background:var(--accent-soft);color:var(--accent)}
-  .b-help{background:var(--teal-soft);color:var(--teal)}
-  .b-learn{background:var(--amber-soft);color:var(--amber)}
-  .stack-desc{font-size:13.5px;color:var(--ink-2);line-height:1.65}
-  .bar{height:4px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:auto}
-  .bar>i{display:block;height:100%;border-radius:99px;background:var(--accent)}
-  .bar.t>i{background:var(--teal)} .bar.l>i{background:var(--amber)}
+  /* ---------- stack ---------- */
+  .stack-main{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  @media(max-width:860px){.stack-main{grid-template-columns:1fr}}
+  .stack-card{background:var(--card);padding:34px 30px 30px;display:flex;flex-direction:column;gap:14px;min-height:230px}
+  .stack-card .k{font-family:var(--serif);font-size:20px;font-weight:700;letter-spacing:.02em}
+  .stack-card .badge{align-self:flex-start;font-size:11.5px;letter-spacing:.06em;padding:4px 10px;border-radius:2px;background:var(--accent-soft);color:var(--accent);font-weight:600}
+  .stack-card p{font-size:14px;line-height:1.85;color:var(--ink-2)}
+  .stack-sub{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-top:0}
+  @media(max-width:860px){.stack-sub{grid-template-columns:1fr}}
+  .stack-mini{background:var(--paper-2);padding:22px 30px}
+  .stack-mini .k{font-size:14.5px;font-weight:600;display:flex;align-items:center;gap:10px}
+  .stack-mini .dot{width:6px;height:6px;border-radius:50%;background:var(--ink-3);display:inline-block}
+  .stack-mini .dot.learn{background:#b98b2e}
+  .stack-mini p{font-size:13px;color:var(--ink-3);margin-top:6px;line-height:1.7}
 
-  .timeline{position:relative;padding-left:22px}
-  .timeline::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:var(--line)}
-  .tl-item{position:relative;padding:0 0 20px 6px}
+  /* ---------- projects ---------- */
+  .project{display:grid;grid-template-columns:1.18fr .82fr;gap:clamp(28px,4.5vw,64px);align-items:center}
+  .project + .project{margin-top:clamp(80px,12vh,140px)}
+  .project.reverse{grid-template-columns:.82fr 1.18fr}
+  .project.reverse .media{order:2}
+  .project.reverse .body{order:1}
+  @media(max-width:860px){
+    .project,.project.reverse{grid-template-columns:1fr;gap:28px}
+    .project.reverse .media{order:0}
+    .project.reverse .body{order:0}
+  }
+  .media{
+    display:block;overflow:hidden;border:1px solid var(--line-2);border-radius:2px;
+    background:var(--paper-2);box-shadow:0 1px 2px rgba(23,26,29,.04);
+    transition:transform .18s var(--ease),box-shadow .18s var(--ease),border-color .18s var(--ease);
+  }
+  .media img{width:100%;height:auto;transition:transform .6s var(--ease-enter)}
+  .media:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(23,26,29,.10);border-color:var(--ink-3)}
+  .media:hover img{transform:scale(1.03)}
+  .media:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+  .p-meta{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+  .p-meta .n{color:var(--accent);font-weight:700}
+  .p-meta .kind{padding:3px 9px;border:1px solid var(--line-2);border-radius:2px;letter-spacing:.04em;text-transform:none;font-size:11.5px}
+  .project h3{font-family:var(--serif);font-size:clamp(24px,2.6vw,32px);font-weight:700;line-height:1.3;margin:16px 0 14px;letter-spacing:.01em}
+  .project h3 a{background-image:linear-gradient(currentColor,currentColor);background-size:0 1px;background-repeat:no-repeat;background-position:0 100%;transition:background-size .25s var(--ease)}
+  .project h3 a:hover{background-size:100% 1px}
+  .project .desc{font-size:14.5px;line-height:1.9;color:var(--ink-2);max-width:32em}
+  .p-links{display:flex;flex-wrap:wrap;gap:22px;margin-top:24px}
+  .arrow-link{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--ink);padding-bottom:2px;border-bottom:1px solid var(--line-2);transition:border-color .15s var(--ease),color .15s var(--ease)}
+  .arrow-link svg{width:14px;height:14px;transition:transform .15s var(--ease)}
+  .arrow-link:hover{color:var(--accent);border-color:var(--accent)}
+  .arrow-link:hover svg{transform:translate(2px,-2px)}
+  .p-note{margin-top:12px;font-size:12.5px;color:var(--ink-3)}
+
+  /* project 04 - no screenshot */
+  .project-text{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(28px,4.5vw,64px);align-items:center;margin-top:clamp(80px,12vh,140px)}
+  @media(max-width:860px){.project-text{grid-template-columns:1fr;gap:24px}}
+  .text-panel{border:1px solid var(--line);background:var(--card);padding:38px 34px;border-radius:2px}
+  .text-panel .code-line{font-family:ui-monospace,"SFMono-Regular",Consolas,monospace;font-size:12.5px;color:var(--ink-3);line-height:2}
+  .text-panel .code-line b{color:var(--accent);font-weight:600}
+
+  /* ---------- campus ---------- */
+  .campus-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:start}
+  @media(max-width:860px){.campus-grid{grid-template-columns:1fr;gap:48px}}
+  .tl{position:relative;padding-left:24px;border-left:1px solid var(--line)}
+  .tl-item{position:relative;padding-bottom:30px}
   .tl-item:last-child{padding-bottom:0}
-  .tl-item::before{content:"";position:absolute;left:-21px;top:9px;width:9px;height:9px;border-radius:50%;background:var(--card);border:2px solid var(--accent)}
-  .tl-title{font-weight:650;font-size:15px}
-  .tl-meta{font-size:12px;color:var(--ink-3);margin-bottom:3px}
-  .tl-desc{font-size:13.5px;color:var(--ink-2)}
+  .tl-item::before{content:"";position:absolute;left:-28px;top:9px;width:7px;height:7px;border-radius:50%;background:var(--paper);border:1px solid var(--accent)}
+  .tl-meta{font-size:12px;letter-spacing:.08em;color:var(--ink-3);text-transform:uppercase}
+  .tl-title{font-size:15.5px;font-weight:600;margin:4px 0 4px}
+  .tl-desc{font-size:13.5px;color:var(--ink-2);line-height:1.8}
+  .award{border-top:1px solid var(--line);padding:22px 0;display:flex;gap:18px;align-items:flex-start}
+  .award:last-child{border-bottom:1px solid var(--line)}
+  .award .n{font-family:var(--serif);font-size:13px;color:var(--accent);padding-top:2px}
+  .award .t{font-size:15px;font-weight:600;line-height:1.6}
+  .award .d{font-size:13.5px;color:var(--ink-2);line-height:1.8;margin-top:4px}
+  .award .tag{font-size:11.5px;color:var(--ink-3);border:1px solid var(--line-2);border-radius:2px;padding:2px 8px;margin-left:8px;white-space:nowrap;vertical-align:2px}
 
-  .work{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--line)}
-  .work:last-child{border-bottom:0;padding-bottom:0}
-  .work:first-child{padding-top:0}
-  .work-idx{flex:0 0 34px;height:34px;border-radius:10px;background:var(--accent-soft);color:var(--accent);
-    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
-  .work-title{font-weight:650;font-size:15px}
-  .work-desc{font-size:13.5px;color:var(--ink-2);margin-top:3px}
-  .work-kind{font-size:11px;color:var(--ink-3);border:1px solid var(--line);border-radius:5px;padding:2px 7px;margin-left:8px;vertical-align:2px}
-
-  .focus{background:linear-gradient(135deg,#ffffff 0%,#f2f7ff 100%);border:1px solid #dbe6fb}
-  .focus h3{font-size:17px;margin-bottom:8px}
-  .focus p{font-size:14px;color:var(--ink-2)}
-  .kv{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
-  .kv div{background:rgba(255,255,255,.75);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
-  .kv dt{font-size:11px;color:var(--ink-3);letter-spacing:.04em}
-  .kv dd{font-size:14px;font-weight:650;margin-top:3px}
+  /* ---------- focus / moment ---------- */
+  .moment{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(32px,6vw,80px);align-items:center}
+  @media(max-width:860px){.moment{grid-template-columns:1fr;gap:40px}}
+  .big-figure{font-family:var(--serif);line-height:.9;letter-spacing:-.02em;color:var(--ink)}
+  .big-figure .num{font-size:clamp(96px,16vw,196px);font-weight:700;display:block}
+  .big-figure .unit{font-size:clamp(22px,3vw,34px);font-weight:400;color:var(--accent);letter-spacing:.1em;display:block;margin-top:14px}
+  .focus-body h3{font-family:var(--serif);font-size:clamp(21px,2.4vw,28px);font-weight:700;line-height:1.4;margin-bottom:18px}
+  .focus-body p{font-size:14.5px;line-height:1.95;color:var(--ink-2);max-width:32em}
+  .focus-body p + p{margin-top:14px}
+  .kv{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:30px}
   @media(max-width:640px){.kv{grid-template-columns:1fr}}
+  .kv div{background:var(--card);padding:16px 18px}
+  .kv dt{font-size:11px;letter-spacing:.1em;color:var(--ink-3);text-transform:uppercase}
+  .kv dd{font-size:13.5px;font-weight:600;margin-top:5px;line-height:1.5}
 
-  .chips{display:flex;flex-wrap:wrap;gap:10px}
-  .chip{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 16px;font-size:14px;color:var(--ink-2)}
+  /* ---------- more ---------- */
+  .chips{display:flex;flex-wrap:wrap;gap:12px}
+  .chip{border:1px solid var(--line-2);border-radius:999px;padding:10px 22px;font-size:14px;color:var(--ink-2);transition:transform .15s var(--ease),border-color .15s var(--ease),color .15s var(--ease),background-color .15s var(--ease)}
+  .chip:hover{transform:translateY(-2px);border-color:var(--ink-3);color:var(--ink);background:var(--card)}
 
-  footer{border-top:1px solid var(--line);padding:28px 0 40px;margin-top:20px;color:var(--ink-3);font-size:13px}
-  footer .wrap{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
-  footer a{color:var(--accent)}
-  .links{display:flex;gap:18px;flex-wrap:wrap}
+  /* ---------- footer ---------- */
+  .closing{border-top:1px solid var(--line);padding:clamp(64px,9vh,100px) 0 56px;background:var(--paper-2)}
+  .close-top{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;margin-bottom:56px}
+  .close-top h2{font-family:var(--serif);font-size:clamp(30px,4.4vw,54px);font-weight:700;line-height:1.2;letter-spacing:.01em}
+  .close-top h2 em{font-style:normal;color:var(--accent)}
+  .close-links{display:flex;flex-wrap:wrap;gap:26px;font-size:14px}
+  .close-links a{border-bottom:1px solid var(--line-2);padding-bottom:2px;transition:border-color .15s var(--ease),color .15s var(--ease)}
+  .close-links a:hover{color:var(--accent);border-color:var(--accent)}
+  .legal{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--line);padding-top:24px}
 
-  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
-  .reveal.in{opacity:1;transform:none}
-  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+  /* ---------- reveal for moment only (a dealt moment, not scroll-fade) ---------- */
+  .moment .big-figure{opacity:1}
+  .focus-body h3 .hl{background-image:linear-gradient(var(--accent-soft),var(--accent-soft));background-size:0 42%;background-repeat:no-repeat;background-position:0 88%;transition:background-size .8s var(--ease)}
 
+  /* ---------- hero entrance (pure CSS: always completes, no JS dependency) ---------- */
+  @keyframes heroRise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+  @keyframes lineRise{from{opacity:0;transform:translateY(112%)}to{opacity:1;transform:none}}
+  .hero .eyebrow{animation:heroRise .7s var(--ease-enter) both}
+  .hero-title .line > span{animation:lineRise 1.05s var(--ease-enter) .08s both}
+  .hero-title .line + .line > span{animation-delay:.16s}
+  .hero-lead{animation:heroRise .85s var(--ease-enter) .3s both}
+  .hero-actions{animation:heroRise .7s var(--ease-enter) .42s both}
+  .hero-aside{animation:heroRise .8s var(--ease-enter) .38s both}
+  .hero-scroll{animation:heroRise .8s var(--ease-enter) .6s both}
+
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *{animation:none!important;transition:none!important}
+    .hero-scroll .line{opacity:.5}
+  }
   @media print{
-    body{background:#fff} nav{display:none} header.hero{padding:24px 0}
-    .card,.focus{box-shadow:none;break-inside:avoid} section{padding:18px 0}
-    .reveal{opacity:1;transform:none}
+    .nav,.hero-scroll{display:none}
+    body{background:#fff}
+    .section{padding:24px 0;break-inside:avoid}
+    .project{break-inside:avoid}
   }
 </style>
 </head>
 <body>
 
-<nav>
+<nav class="nav" id="nav">
   <div class="wrap">
-    <div class="brand">马一先<span>M1xqq</span></div>
-    <div class="navlinks">
-      <a href="#about">关于</a><a href="#stack">技术栈</a><a href="#campus">校园</a>
-      <a href="#works">作品</a><a href="#focus">本次赛事</a>
+    <a class="brand" href="#top">马一先<span>M1xqq</span></a>
+    <div class="nav-links">
+      <a href="#about">关于</a>
+      <a href="#stack">能力</a>
+      <a href="#works">作品</a>
+      <a href="#campus">经历</a>
+      <a href="#focus">本次赛事</a>
     </div>
   </div>
 </nav>
 
-<header class="hero">
-  <div class="wrap">
-    <div class="eyebrow"><i></i>地瓜机器人黑客松 · 参赛队员</div>
-    <h1>马一先<small>M1xqq</small></h1>
-    <p class="sub">上海工程技术大学 · 电子信息类 · 2026 级</p>
-    <p class="lead">擅长软件开发、机械结构与产品设计：写网页与演示 demo、做 Fusion360 建模和 3D 打印、设计产品展示，把想法落到能跑、能拿在手里的东西。RDK 开发板基础使用过，端侧 AI 方向继续深入。</p>
-    <div class="tags">
-      <span class="tag"><b>软件开发</b> · 网站 / demo</span>
-      <span class="tag"><b>机械结构</b> · 建模 / 3D 打印</span>
-      <span class="tag"><b>产品设计</b> · 展示物料</span>
-      <span class="tag">AI 辅助开发</span>
-      <span class="tag"><b>RDK</b> · 基础使用</span>
-      <span class="tag">上海</span>
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-main">
+      <p class="eyebrow" data-enter="eyebrow">地瓜机器人黑客松 · 参赛队员</p>
+      <h1 class="hero-title">
+        <span class="line"><span data-enter="line1">马一先</span></span>
+        <span class="line"><span class="latin" data-enter="line2">M1xqq</span></span>
+      </h1>
+      <p class="hero-lead" data-enter="lead">
+        上海工程技术大学 · 电子信息类 2026 级。我在做的事很简单：<b>把想法写成能跑的网页，做成能拿在手里的结构。</b>
+        软件开发、机械结构、产品设计，三条线我都自己动手。
+      </p>
+      <div class="hero-actions" data-enter="actions">
+        <a class="btn btn-primary" href="#works">
+          看作品
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#about">先了解我</a>
+      </div>
     </div>
+    <aside class="hero-aside" data-enter="facts">
+      <div class="hero-emblem" aria-hidden="true">马</div>
+      <div class="hfact"><b>3</b><span>个可在线体验的项目</span></div>
+      <div class="hfact"><b>2</b><span>项学术佐证</span></div>
+      <div class="hfact"><b>48h</b><span>黑客松现场开发</span></div>
+    </aside>
   </div>
+  <div class="hero-scroll"><span class="line"></span>向下</div>
 </header>
 
-<main class="wrap">
+<main>
 
-  <section id="about" class="reveal">
-    <div class="sec-head"><span class="sec-num">01</span><h2>关于我</h2><span class="sec-note">Profile</span></div>
-    <div class="card">
-      <p style="font-size:14.5px;color:var(--ink-2)">
-        2026 年入学上海工程技术大学，电子信息类大一，任电子信息类四班班长。日常在课程之外主要做两件事：一是写代码、做展示页和自动化小工具，把想法快速跑通；二是把设计变成能拿在手里的东西，做建模、打印、装配和迭代。
-      </p>
-      <p style="font-size:14.5px;color:var(--ink-2);margin-top:12px">
-        在校内参与学术实践中心与 Nextus 竞赛工作室的工作，承担活动组织与技术支持。当前正和队友一起准备 12 月的地瓜机器人黑客松，目标是 48 小时内做出一件能现场跑起来的实物作品。
-      </p>
-    </div>
-  </section>
-
-  <section id="stack" class="reveal">
-    <div class="sec-head"><span class="sec-num">02</span><h2>我能负责什么</h2><span class="sec-note">对照报名技术栈</span></div>
-    <div class="grid-3">
-      <div class="card stack-item">
-        <div class="stack-top"><span class="stack-name">软件开发</span><span class="badge b-main">可独立负责</span></div>
-        <p class="stack-desc">vibe coding、网站与域名开发、演示页与 demo 快速搭建，以及 AI 辅助开发过程留痕。</p>
-        <div class="bar"><i style="width:88%"></i></div>
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">01</span>
+        <h2>关于我</h2>
+        <span class="sec-note">Profile</span>
       </div>
-      <div class="card stack-item">
-        <div class="stack-top"><span class="stack-name">机械结构</span><span class="badge b-main">可独立负责</span></div>
-        <p class="stack-desc">Fusion360 建模、AI 辅助建模、3D 打印结构件设计与打样。</p>
-        <div class="bar"><i style="width:82%"></i></div>
-      </div>
-      <div class="card stack-item">
-        <div class="stack-top"><span class="stack-name">产品设计</span><span class="badge b-main">可独立负责</span></div>
-        <p class="stack-desc">产品与演示页面、界面呈现、展示物料；有个人网站与课程页面等完整设计交付经验。</p>
-        <div class="bar t"><i style="width:72%"></i></div>
-      </div>
-      <div class="card stack-item">
-        <div class="stack-top"><span class="stack-name">算法 / 模型</span><span class="badge b-help">协助 · 需带</span></div>
-        <p class="stack-desc">AI 建模与端侧模型调用、推理 demo；RDK 基础使用过，实机部署继续深入。</p>
-        <div class="bar t"><i style="width:48%"></i></div>
-      </div>
-      <div class="card stack-item">
-        <div class="stack-top"><span class="stack-name">嵌入式</span><span class="badge b-learn">学习中</span></div>
-        <p class="stack-desc">先从烧录、接线、外设调试做起，跟随队内嵌入式方向同学学习。</p>
-        <div class="bar l"><i style="width:34%"></i></div>
-      </div>
-      <div class="card stack-item">
-        <div class="stack-top"><span class="stack-name">硬件电路</span><span class="badge b-learn">学习中</span></div>
-        <p class="stack-desc">配合硬件方向同学完成联调，暂不独立承担电路设计。</p>
-        <div class="bar l"><i style="width:30%"></i></div>
+      <div class="about-grid">
+        <div class="prose">
+          <p>
+            2026 年入学上海工程技术大学，电子信息类大一，任<strong>电子信息类四班班长</strong>。
+            课外主要做两件事：一是写代码、做展示页和自动化小工具，把想法快速跑通；
+            二是把设计变成能拿在手里的东西，做建模、打印、装配和迭代。
+          </p>
+          <p>
+            在校内参与<strong>学术实践中心</strong>与 <strong>Nextus 竞赛工作室</strong>的工作，承担活动组织与技术支持。
+            当前正和队友一起准备 12 月的地瓜机器人黑客松，目标是 48 小时内做出一件能现场跑起来的实物作品。
+          </p>
+        </div>
+        <dl class="facts">
+          <div class="fact"><dt>学校</dt><dd>上海工程技术大学</dd></div>
+          <div class="fact"><dt>专业</dt><dd>电子信息类 · 2026 级</dd></div>
+          <div class="fact"><dt>班级角色</dt><dd>四班班长</dd></div>
+          <div class="fact"><dt>社团</dt><dd>学术实践中心 · Nextus</dd></div>
+          <div class="fact"><dt>所在地</dt><dd>上海</dd></div>
+        </dl>
       </div>
     </div>
   </section>
 
-  <section id="campus" class="reveal">
-    <div class="sec-head"><span class="sec-num">03</span><h2>校园角色与经历</h2><span class="sec-note">Campus</span></div>
-    <div class="grid-2">
-      <div class="card timeline">
-        <div class="tl-item">
-          <div class="tl-meta">2026 – 至今 · 上海工程技术大学</div>
-          <div class="tl-title">电子信息类四班班长</div>
-          <div class="tl-desc">电子信息类大一，大一下专业分流。</div>
+  <section class="section" id="stack">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">02</span>
+        <h2>我能负责什么</h2>
+        <span class="sec-note">Capabilities</span>
+      </div>
+      <div class="stack-main">
+        <div class="stack-card">
+          <span class="badge">可独立负责</span>
+          <div class="k">软件开发</div>
+          <p>vibe coding、网站与域名开发、演示页与 demo 快速搭建，以及 AI 辅助开发的过程留痕。</p>
         </div>
-        <div class="tl-item">
-          <div class="tl-meta">学术实践中心 · 学术部</div>
-          <div class="tl-title">干事 / 薪火杯辩论赛主持</div>
-          <div class="tl-desc">负责每周二 18:30–19:30 的赛事主持工作。</div>
+        <div class="stack-card">
+          <span class="badge">可独立负责</span>
+          <div class="k">机械结构</div>
+          <p>Fusion 360 建模、AI 辅助建模、3D 打印结构件设计与打样。</p>
         </div>
-        <div class="tl-item">
-          <div class="tl-meta">Nextus 竞赛工作室</div>
-          <div class="tl-title">社团成员 · 竞赛团队核心成员</div>
-          <div class="tl-desc">参与社团与团队事务、活动组织，如「创客之夜」。</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-meta">2026.11</div>
-          <div class="tl-title">爱菊小学「一纸千年」研学营</div>
-          <div class="tl-desc">负责技术工作。</div>
+        <div class="stack-card">
+          <span class="badge">可独立负责</span>
+          <div class="k">产品设计</div>
+          <p>产品与演示页面、界面呈现、展示物料；有个人网站与课程页面等完整设计交付经验。</p>
         </div>
       </div>
-      <div class="card">
-        <div class="sec-head" style="margin-bottom:14px"><h2 style="font-size:16px">可佐证的学术经历</h2></div>
-        <div class="work">
-          <div class="work-idx">01</div>
-          <div>
-            <div class="work-title">中学生英才计划 2024 级<span class="work-kind">华东师大 · 物理</span></div>
-            <div class="work-desc">导师方俊锋，2024.12 结业；课题《高效稳定倒置钙钛矿太阳能电池的制备》，后续获闵行区研究性学习成果评选一等奖（2025.8）。</div>
+      <div class="stack-sub">
+        <div class="stack-mini">
+          <div class="k"><span class="dot"></span>算法 / 模型</div>
+          <p>协助 · 需带：AI 建模与端侧模型调用、推理 demo；RDK 基础使用过，实机部署继续深入。</p>
+        </div>
+        <div class="stack-mini">
+          <div class="k"><span class="dot learn"></span>嵌入式</div>
+          <p>学习中：先从烧录、接线、外设调试做起，跟随队内嵌入式方向同学学习。</p>
+        </div>
+        <div class="stack-mini">
+          <div class="k"><span class="dot learn"></span>硬件电路</div>
+          <p>学习中：配合硬件方向同学完成联调，暂不独立承担电路设计。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="works">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">03</span>
+        <h2>作品</h2>
+        <span class="sec-note">Works · 点开就能用</span>
+      </div>
+
+      <article class="project">
+        <a class="media" href="http://noel-psc.cn:8000" target="_blank" rel="noopener" aria-label="打开 SWEET少年的创想空间">
+          <img src="shots/camp.png" alt="SWEET少年的创想空间首页" loading="eager" decoding="async" width="2160" height="1350">
+        </a>
+        <div class="body">
+          <div class="p-meta"><span class="n">01</span><span class="kind">全栈 Web</span></div>
+          <h3><a href="http://noel-psc.cn:8000" target="_blank" rel="noopener">SWEET少年的创想空间</a></h3>
+          <p class="desc">
+            给小学研学营做的作品收集网站。学生扫自己的专属二维码进入个人空间，上传照片、绘画、视频，
+            能看到上传进度，截止前还能改。后端做了 CSRF 防护与会话管理，已经真实投入使用。
+          </p>
+          <div class="p-links">
+            <a class="arrow-link" href="http://noel-psc.cn:8000" target="_blank" rel="noopener">
+              打开网站
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12L12 4M6 4h6v6"/></svg>
+            </a>
+            <a class="arrow-link" href="https://github.com/M1xqq/camp-gallery" target="_blank" rel="noopener">
+              源码
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12L12 4M6 4h6v6"/></svg>
+            </a>
           </div>
         </div>
-        <div class="work">
-          <div class="work-idx">02</div>
-          <div>
-            <div class="work-title">第 39 届中国化学奥林匹克（初赛）三等奖<span class="work-kind">2025.10</span></div>
-            <div class="work-desc">学科竞赛佐证。</div>
+      </article>
+
+      <article class="project reverse">
+        <a class="media" href="yizi/" target="_blank" rel="noopener" aria-label="打开一纸千年互动课程">
+          <img src="shots/yizi.png" alt="一纸千年互动课程封面" loading="eager" decoding="async" width="2160" height="1350">
+        </a>
+        <div class="body">
+          <div class="p-meta"><span class="n">02</span><span class="kind">互动课程</span></div>
+          <h3><a href="yizi/" target="_blank" rel="noopener">一纸千年 · 心纹研学</a></h3>
+          <p class="desc">
+            给爱菊小学研学营做的单文件互动课，讲造纸术与汉字演变。六个章节，配对游戏、随堂测验都在里面，
+            原生 SVG 动画加 CSS 动效，不联网、不装东西，双击就能上课。
+          </p>
+          <div class="p-links">
+            <a class="arrow-link" href="yizi/" target="_blank" rel="noopener">
+              直接上课
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12L12 4M6 4h6v6"/></svg>
+            </a>
+            <a class="arrow-link" href="https://github.com/M1xqq/yizi-qiannian" target="_blank" rel="noopener">
+              源码
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12L12 4M6 4h6v6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <a class="media" href="https://xn--fhqu4y0gz4eixee8i2xip5mcs1ads3d.club" target="_blank" rel="noopener" aria-label="打开上海奶隆工程技术大学.club">
+          <img src="shots/nailong.png" alt="上海奶隆工程技术大学.club 首页" loading="eager" decoding="async" width="2160" height="1350">
+        </a>
+        <div class="body">
+          <div class="p-meta"><span class="n">03</span><span class="kind">网站作品</span></div>
+          <h3><a href="https://xn--fhqu4y0gz4eixee8i2xip5mcs1ads3d.club" target="_blank" rel="noopener">上海奶隆工程技术大学.club</a></h3>
+          <p class="desc">
+            我的第一个大学作品。自己买的中文 .club 域名，从域名解析、证书配置到部署上线全部自己走通，
+            又接了一个第三方访问统计 API，并给统计服务挂了做本地降级计数，页面始终能开。
+          </p>
+          <div class="p-links">
+            <a class="arrow-link" href="https://xn--fhqu4y0gz4eixee8i2xip5mcs1ads3d.club" target="_blank" rel="noopener">
+              打开网站
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12L12 4M6 4h6v6"/></svg>
+            </a>
+            <a class="arrow-link" href="https://github.com/M1xqq/nailong-laugh" target="_blank" rel="noopener">
+              源码
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12L12 4M6 4h6v6"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <div class="project-text">
+        <div class="body">
+          <div class="p-meta"><span class="n">04</span><span class="kind">本页</span></div>
+          <h3>这个自我介绍页</h3>
+          <p class="desc">
+            你现在看的这一页。原生 HTML / CSS / JS，不套框架、不引组件库，只用了 GSAP 做首屏入场和微交互。
+            响应式、打印样式、减少动效偏好都做了处理。
+          </p>
+          <div class="p-links">
+            <a class="arrow-link" href="https://github.com/M1xqq/self-intro" target="_blank" rel="noopener">
+              源码仓库
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12L12 4M6 4h6v6"/></svg>
+            </a>
+            <a class="arrow-link" href="https://m1xqq.github.io/self-intro/" target="_blank" rel="noopener">
+              在线地址
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12L12 4M6 4h6v6"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="text-panel">
+          <div class="code-line">&lt;<b>html</b> lang="zh-CN"&gt;</div>
+          <div class="code-line">&nbsp;&nbsp;&lt;<b>!-- 无框架 · 无组件库 · 单文件 --&gt;</b></div>
+          <div class="code-line">&nbsp;&nbsp;viewport · og · theme-color</div>
+          <div class="code-line">&nbsp;&nbsp;响应式 1440 / 1024 / 768 / 390</div>
+          <div class="code-line">&nbsp;&nbsp;prefers-reduced-motion 已适配</div>
+          <div class="code-line">&nbsp;&nbsp;GSAP 3 · 首屏入场 + hover 微交互</div>
+          <div class="code-line">&lt;/<b>html</b>&gt;</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="campus">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">04</span>
+        <h2>校园与学术</h2>
+        <span class="sec-note">Campus &amp; Academic</span>
+      </div>
+      <div class="campus-grid">
+        <div class="tl">
+          <div class="tl-item">
+            <div class="tl-meta">2026 – 至今 · 上海工程技术大学</div>
+            <div class="tl-title">电子信息类四班班长</div>
+            <div class="tl-desc">电子信息类大一，大一下专业分流。</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-meta">学术实践中心 · 学术部</div>
+            <div class="tl-title">干事 / 薪火杯辩论赛主持</div>
+            <div class="tl-desc">负责每周二 18:30–19:30 的赛事主持工作。</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-meta">Nextus 竞赛工作室</div>
+            <div class="tl-title">社团成员 · 竞赛团队核心成员</div>
+            <div class="tl-desc">参与社团与团队事务、活动组织，如「创客之夜」。</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-meta">2026.11</div>
+            <div class="tl-title">爱菊小学「一纸千年」研学营</div>
+            <div class="tl-desc">负责技术工作，交付互动课程与作品收集系统。</div>
+          </div>
+        </div>
+        <div>
+          <div class="award">
+            <div class="n">01</div>
+            <div>
+              <div class="t">中学生英才计划 2024 级<span class="tag">华东师大 · 物理</span></div>
+              <div class="d">导师方俊锋，2024.12 结业；课题《高效稳定倒置钙钛矿太阳能电池的制备》，后续获闵行区研究性学习成果评选一等奖（2025.8）。</div>
+            </div>
+          </div>
+          <div class="award">
+            <div class="n">02</div>
+            <div>
+              <div class="t">第 39 届中国化学奥林匹克（初赛）三等奖<span class="tag">2025.10</span></div>
+              <div class="d">学科竞赛佐证。</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="works" class="reveal">
-    <div class="sec-head"><span class="sec-num">04</span><h2>作品与佐证</h2><span class="sec-note">Works</span></div>
-    <div class="card">
-      <div class="work">
-        <div class="work-idx">01</div>
-        <div>
-          <div class="work-title"><a href="http://noel-psc.cn:8000" style="color:var(--accent)" target="_blank" rel="noopener">SWEET少年的创想空间</a><span class="work-kind">全栈 Web</span></div>
-          <div class="work-desc">为小学研学营开发的作品收集 Web 应用：学生凭专属二维码上传照片 / 绘画 / 视频，支持进度显示与截止前编辑，后端含 CSRF 防护与会话管理。源码：<a href="https://github.com/M1xqq/camp-gallery" style="color:var(--accent)" target="_blank" rel="noopener">github.com/M1xqq/camp-gallery</a></div>
-        </div>
+  <section class="section" id="focus">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">05</span>
+        <h2>正在准备</h2>
+        <span class="sec-note">Current</span>
       </div>
-      <div class="work">
-        <div class="work-idx">02</div>
-        <div>
-          <div class="work-title"><a href="https://github.com/M1xqq/yizi-qiannian" style="color:var(--accent)" target="_blank" rel="noopener">一纸千年 · 心纹研学</a><span class="work-kind">互动课程</span></div>
-          <div class="work-desc">为爱菊小学研学营制作的单文件 HTML 互动课程，原生 SVG 动画与 CSS 动效呈现造纸术与汉字演变，含配对游戏、随堂测验等六个章节，可离线运行。源码：<a href="https://github.com/M1xqq/yizi-qiannian" style="color:var(--accent)" target="_blank" rel="noopener">github.com/M1xqq/yizi-qiannian</a></div>
+      <div class="moment">
+        <div class="big-figure">
+          <span class="num">48</span>
+          <span class="unit">小时 · 现场开发</span>
         </div>
-      </div>
-      <div class="work">
-        <div class="work-idx">03</div>
-        <div>
-          <div class="work-title"><a href="https://xn--fhqu4y0gz4eixee8i2xip5mcs1ads3d.club" style="color:var(--accent)" target="_blank" rel="noopener">上海奶隆工程技术大学.club</a><span class="work-kind">网站作品 · 第一个大学作品</span></div>
-          <div class="work-desc">自购中文 .club 域名，独立完成解析、证书配置与部署上线，接入第三方访问统计 API 并做本地降级计数。走通「域名 → 部署 → 上线 → 接 API」完整链路。源码：<a href="https://github.com/M1xqq/nailong-laugh" style="color:var(--accent)" target="_blank" rel="noopener">github.com/M1xqq/nailong-laugh</a></div>
-        </div>
-      </div>
-      <div class="work">
-        <div class="work-idx">04</div>
-        <div>
-          <div class="work-title">HTML 自我介绍网页<span class="work-kind">本页</span></div>
-          <div class="work-desc">原生 HTML / CSS / JS 写的单页静态站点，含响应式布局与打印样式，无框架、无外部依赖；源码与提交记录见 <a href="https://github.com/M1xqq/self-intro" style="color:var(--accent)" target="_blank" rel="noopener">github.com/M1xqq/self-intro</a>。</div>
+        <div class="focus-body">
+          <h3>首届地瓜机器人黑客松<br><span class="hl">48 小时和真实世界碰一碰</span></h3>
+          <p>
+            2026 年 12 月 5–7 日，上海张江科学会堂，全程线下。开放主题、不分赛道，
+            作品须以地瓜 RDK 为核心计算平台，并展示 AI 辅助开发的实际使用路径；
+            现场演示可运行的实物，评审看活动期间新增的工作。
+          </p>
+          <p>
+            我这边主要负责软件开发、机械结构与产品设计。RDK X5 的官方文档、入门课程和现成 Demo 已经过了一遍，
+            基础使用上手，可以配合做端侧部署与外设联调。
+          </p>
+          <dl class="kv">
+            <div><dt>队内分工</dt><dd>软件 / 机械结构 / 产品设计</dd></div>
+            <div><dt>报名截止</dt><dd>2026.11.30</dd></div>
+            <div><dt>开发工具</dt><dd>RDK X5 · Fusion 360</dd></div>
+          </dl>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="focus" class="reveal">
-    <div class="sec-head"><span class="sec-num">05</span><h2>正在准备</h2><span class="sec-note">Current</span></div>
-    <div class="card focus">
-      <h3>首届地瓜机器人黑客松 · 48H 和真实世界碰一碰</h3>
-      <p>2026 年 12 月 5–7 日，上海张江科学会堂，全程线下。开放主题、不分赛道，作品须以地瓜 RDK 为核心计算平台，并展示 AI 辅助开发的实际使用路径；现场演示可运行的实物，评审看活动期间新增的工作。</p>
-      <p style="margin-top:10px">我这边主要负责软件开发、机械结构与产品设计；RDK X5 官方文档、入门课程和现成 Demo 已过一遍，基础使用上手，可配合做端侧部署与外设联调。</p>
-      <dl class="kv">
-        <div><dt>队内分工</dt><dd>软件 / 机械结构 / 产品设计</dd></div>
-        <div><dt>报名截止</dt><dd>2026.11.30</dd></div>
-        <div><dt>开发工具</dt><dd>RDK X5 · Fusion 360</dd></div>
-      </dl>
-    </div>
-  </section>
-
-  <section class="reveal">
-    <div class="sec-head"><span class="sec-num">06</span><h2>课外的我</h2><span class="sec-note">Interests</span></div>
-    <div class="chips">
-      <span class="chip">中医</span><span class="chip">道家玄学体系</span><span class="chip">足球</span><span class="chip">军模</span>
+  <section class="section" id="more">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">06</span>
+        <h2>课外的我</h2>
+        <span class="sec-note">Interests</span>
+      </div>
+      <div class="chips">
+        <span class="chip">中医</span>
+        <span class="chip">道家玄学体系</span>
+        <span class="chip">足球</span>
+        <span class="chip">军模</span>
+      </div>
     </div>
   </section>
 
 </main>
 
-<footer>
+<footer class="closing">
   <div class="wrap">
-    <div>© 2026 马一先 · 本页用于队伍报名与项目佐证</div>
-    <div class="links">
-      <a href="https://m1xqq.github.io/self-intro/" target="_blank" rel="noopener">在线地址</a>
-      <a id="repo-link" href="https://github.com/M1xqq/self-intro" target="_blank" rel="noopener">本页源码仓库</a>
-      <a href="https://gitee.com/hzjhzjhzjhzj" target="_blank" rel="noopener">Gitee 主页</a>
+    <div class="close-top">
+      <h2>想看看这些东西<br>真正跑起来的样子？<em>点进去就行。</em></h2>
+      <div class="close-links">
+        <a href="http://noel-psc.cn:8000" target="_blank" rel="noopener">创想空间</a>
+        <a href="yizi/" target="_blank" rel="noopener">一纸千年</a>
+        <a href="https://xn--fhqu4y0gz4eixee8i2xip5mcs1ads3d.club" target="_blank" rel="noopener">奶龙网站</a>
+        <a href="https://github.com/M1xqq" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div class="legal">
+      <div>© 2026 马一先 · 本页用于队伍报名与项目佐证</div>
+      <div>上海工程技术大学 · 电子信息类 · 2026 级</div>
     </div>
   </div>
 </footer>
 
+<script src="assets/gsap.min.js"></script>
 <script>
-  const io = new IntersectionObserver((es)=>{
-    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  },{threshold:.08});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+(function(){
+  var nav = document.getElementById('nav');
+  var onScroll = function(){
+    if (window.scrollY > 24) nav.classList.add('is-stuck');
+    else nav.classList.remove('is-stuck');
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var still = location.search.indexOf('still') > -1;
+  if (still) document.documentElement.style.scrollBehavior = 'auto';
+
+  // Hero entrance is pure CSS (see @keyframes heroRise / lineRise): it always finishes,
+  // with no script, no network and no risk of a blank first screen.
+
+  // One dealt moment: the 48-hour figure settles as its section arrives, and the statement lights up.
+  var num = document.querySelector('.big-figure .num');
+  var hl = document.querySelector('.focus-body h3 .hl');
+  var canAnimate = !reduce && !still;
+
+  if (num && hl && 'IntersectionObserver' in window) {
+    if (!canAnimate) {
+      hl.style.backgroundSize = '100% 42%';
+    } else {
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (!e.isIntersecting) return;
+          hl.style.backgroundSize = '100% 42%';
+          if (window.gsap) {
+            gsap.from(num, {scale:.92, opacity:0, duration:1.1, ease:'expo.out'});
+          }
+          io.disconnect();
+        });
+      }, {threshold:.45});
+      io.observe(document.querySelector('#focus'));
+    }
+  } else if (hl) {
+    hl.style.backgroundSize = '100% 42%';
+  }
+})();
 </script>
 </body>
 </html>
