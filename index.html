@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>马一先 M1xqq ｜ 个人介绍与作品</title>
-<meta name="description" content="马一先（M1xqq），上海工程技术大学电子信息类 2026 级。软件开发、机械结构、产品设计。三个可在线体验的真实项目：创想空间、一纸千年、奶龙大笑模拟器。">
+<meta name="description" content="马一先（M1xqq），上海工程技术大学电子信息类 2026 级。软件开发、嵌入式、机械结构、产品与设计。作品：创想空间、一纸千年、Arduino 机器车、奶龙网站。">
 <meta property="og:title" content="马一先 M1xqq ｜ 个人介绍与作品">
 <meta property="og:description" content="上海工程技术大学电子信息类 2026 级。写网页、做结构、把想法做成能跑能拿在手里的东西。">
 <meta property="og:type" content="website">
@@ -244,7 +244,8 @@
   .focus-body p{font-size:14.5px;line-height:1.95;color:var(--ink-2);max-width:32em}
   .focus-body p + p{margin-top:14px}
   .kv{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:30px}
-  @media(max-width:640px){.kv{grid-template-columns:1fr}}
+  .kv.kv-team{grid-template-columns:.72fr 1.62fr .86fr}
+  @media(max-width:640px){.kv,.kv.kv-team{grid-template-columns:1fr}}
   .kv div{background:var(--card);padding:16px 18px}
   .kv dt{font-size:11px;letter-spacing:.1em;color:var(--ink-3);text-transform:uppercase}
   .kv dd{font-size:13.5px;font-weight:600;margin-top:5px;line-height:1.5}
@@ -316,8 +317,8 @@
         <span class="line"><span class="latin" data-enter="line2">M1xqq</span></span>
       </h1>
       <p class="hero-lead" data-enter="lead">
-        上海工程技术大学 · 电子信息类 2026 级。我在做的事很简单：<b>把想法写成能跑的网页，做成能拿在手里的结构。</b>
-        软件开发、机械结构、产品设计，三条线我都自己动手。
+        上海工程技术大学 · 电子信息类 2026 级。我在做的事很简单：<b>把想法写成能跑的网页，做成能拿在手里的结构，再让它在一块板子上动起来。</b>
+        软件开发、嵌入式、机械结构、产品与设计，四条线我都自己动手。
       </p>
       <div class="hero-actions" data-enter="actions">
         <a class="btn btn-primary" href="#works">
@@ -613,13 +614,13 @@
             现场演示可运行的实物，评审看活动期间新增的工作。
           </p>
           <p>
-            我这边主要负责软件开发、机械结构与产品设计。RDK X5 的官方文档、入门课程和现成 Demo 已经过了一遍，
-            基础使用上手，可以配合做端侧部署与外设联调。
+            队里我负责嵌入式：主控、传感器与电机的接线联调，程序烧录与调试。RDK X5 的官方文档、入门课程和现成 Demo 已经过了一遍，
+            之前做 Arduino 机器车和 STM32 攒下的排查路子可以直接接上。
           </p>
-          <dl class="kv">
-            <div><dt>队内分工</dt><dd>软件 / 机械结构 / 产品设计</dd></div>
-            <div><dt>报名截止</dt><dd>2026.11.30</dd></div>
-            <div><dt>开发工具</dt><dd>RDK X5 · Fusion 360</dd></div>
+          <dl class="kv kv-team">
+            <div><dt>队内分工</dt><dd>嵌入式</dd></div>
+            <div><dt>队友</dt><dd>刘心宇 · 硬件与 3D 建模<br>陈丹阳 · 软件<br>赵芮 · 产品</dd></div>
+            <div><dt>开发工具</dt><dd>RDK X5 · STM32 · Fusion 360</dd></div>
           </dl>
         </div>
       </div>
