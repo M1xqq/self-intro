@@ -157,14 +157,15 @@
   .fact dd{color:var(--ink);text-align:right;font-weight:500}
 
   /* ---------- stack ---------- */
-  .stack-main{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
-  @media(max-width:860px){.stack-main{grid-template-columns:1fr}}
-  .stack-card{background:var(--card);padding:34px 30px 30px;display:flex;flex-direction:column;gap:14px;min-height:230px}
-  .stack-card .k{font-family:var(--serif);font-size:20px;font-weight:700;letter-spacing:.02em}
+  .stack-main{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  @media(max-width:1180px){.stack-main{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:620px){.stack-main{grid-template-columns:1fr}}
+  .stack-card{background:var(--card);padding:30px 24px 28px;display:flex;flex-direction:column;gap:13px;min-height:220px}
+  .stack-card .k{font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:.02em}
   .stack-card .badge{align-self:flex-start;font-size:11.5px;letter-spacing:.06em;padding:4px 10px;border-radius:2px;background:var(--accent-soft);color:var(--accent);font-weight:600}
-  .stack-card p{font-size:14px;line-height:1.85;color:var(--ink-2)}
-  .stack-sub{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-top:0}
-  @media(max-width:860px){.stack-sub{grid-template-columns:1fr}}
+  .stack-card p{font-size:13.5px;line-height:1.85;color:var(--ink-2)}
+  .stack-sub{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-top:0}
+  @media(max-width:620px){.stack-sub{grid-template-columns:1fr}}
   .stack-mini{background:var(--paper-2);padding:22px 30px}
   .stack-mini .k{font-size:14.5px;font-weight:600;display:flex;align-items:center;gap:10px}
   .stack-mini .dot{width:6px;height:6px;border-radius:50%;background:var(--ink-3);display:inline-block}
@@ -191,6 +192,10 @@
   .media:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(23,26,29,.10);border-color:var(--ink-3)}
   .media:hover img{transform:scale(1.03)}
   .media:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+  /* 无外链的作品（实物照片），不做可点态 */
+  .media.is-static{cursor:default}
+  .media.is-static:hover{transform:none;box-shadow:0 1px 2px rgba(23,26,29,.04);border-color:var(--line-2)}
+  .media.is-static:hover img{transform:none}
   .p-meta{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
   .p-meta .n{color:var(--accent);font-weight:700}
   .p-meta .kind{padding:3px 9px;border:1px solid var(--line-2);border-radius:2px;letter-spacing:.04em;text-transform:none;font-size:11.5px}
@@ -345,10 +350,13 @@
         <div class="prose">
           <p>
             2026 年入学上海工程技术大学，电子信息类大一，任<strong>电子信息类四班班长</strong>。
-            课外主要做两件事：一是写代码、做展示页和自动化小工具，把想法快速跑通；
-            二是把设计变成能拿在手里的东西，做建模、打印、装配和迭代。
+            课外主要做三件事：写代码、做展示页和自动化小工具，把想法快速跑通；
+            在 <strong>Linux</strong> 上跑服务、配域名证书，把东西真正挂到网上；
+            再把设计变成能拿在手里的东西——建模、3D 打印、装配和迭代。
           </p>
           <p>
+            硬件这边是自己在动手：从 <strong>Arduino</strong> 入门，完整做过一台机器车——底盘、电机驱动、传感器、
+            供电走线、程序烧录与调试全部走了一遍；现在继续往 <strong>STM32</strong> 上做。
             在校内参与<strong>学术实践中心</strong>与 <strong>Nextus 竞赛工作室</strong>的工作，承担活动组织与技术支持。
             当前正和队友一起准备 12 月的地瓜机器人黑客松，目标是 48 小时内做出一件能现场跑起来的实物作品。
           </p>
@@ -358,6 +366,7 @@
           <div class="fact"><dt>专业</dt><dd>电子信息类 · 2026 级</dd></div>
           <div class="fact"><dt>班级角色</dt><dd>四班班长</dd></div>
           <div class="fact"><dt>社团</dt><dd>学术实践中心 · Nextus</dd></div>
+          <div class="fact"><dt>常用工具</dt><dd>Linux · STM32 · Fusion 360</dd></div>
           <div class="fact"><dt>所在地</dt><dd>上海</dd></div>
         </dl>
       </div>
@@ -375,17 +384,22 @@
         <div class="stack-card">
           <span class="badge">可独立负责</span>
           <div class="k">软件开发</div>
-          <p>vibe coding、网站与域名开发、演示页与 demo 快速搭建，以及 AI 辅助开发的过程留痕。</p>
+          <p>vibe coding、网站与域名开发、演示页与 demo 快速搭建；有 Linux 环境下的日常开发与服务部署经验，AI 辅助开发的过程可留痕。</p>
+        </div>
+        <div class="stack-card">
+          <span class="badge">可独立负责</span>
+          <div class="k">嵌入式</div>
+          <p>会 STM32 与 Arduino：烧录、接线、传感器与电机驱动、外设调试。完整做过一台 Arduino 机器车，从底盘到程序全流程自己走完。</p>
         </div>
         <div class="stack-card">
           <span class="badge">可独立负责</span>
           <div class="k">机械结构</div>
-          <p>Fusion 360 建模、AI 辅助建模、3D 打印结构件设计与打样。</p>
+          <p>Fusion 360 建模、AI 辅助建模、3D 打印结构件设计与打样，能自己出件、装起来、再迭代。</p>
         </div>
         <div class="stack-card">
           <span class="badge">可独立负责</span>
-          <div class="k">产品设计</div>
-          <p>产品与演示页面、界面呈现、展示物料；有个人网站与课程页面等完整设计交付经验。</p>
+          <div class="k">设计与前端 UI</div>
+          <p>页面与界面的视觉、版式与交互实现，从信息结构到落地成前端代码一个人做完；展示物料同样覆盖。</p>
         </div>
       </div>
       <div class="stack-sub">
@@ -394,12 +408,8 @@
           <p>协助 · 需带：AI 建模与端侧模型调用、推理 demo；RDK 基础使用过，实机部署继续深入。</p>
         </div>
         <div class="stack-mini">
-          <div class="k"><span class="dot learn"></span>嵌入式</div>
-          <p>学习中：先从烧录、接线、外设调试做起，跟随队内嵌入式方向同学学习。</p>
-        </div>
-        <div class="stack-mini">
           <div class="k"><span class="dot learn"></span>硬件电路</div>
-          <p>学习中：配合硬件方向同学完成联调，暂不独立承担电路设计。</p>
+          <p>学习中：能按参考电路接线与联调，暂不独立做 PCB 设计。</p>
         </div>
       </div>
     </div>
@@ -485,9 +495,25 @@
         </div>
       </article>
 
+      <article class="project reverse">
+        <div class="media is-static">
+          <img src="shots/robotcar.webp" alt="Arduino 机器车：木质底盘、履带、电机驱动板、舵机与走线" loading="eager" decoding="async" width="1280" height="800">
+        </div>
+        <div class="body">
+          <div class="p-meta"><span class="n">04</span><span class="kind">硬件 · 实物</span></div>
+          <h3>Arduino 机器车</h3>
+          <p class="desc">
+            从零件到能跑，这一台是我自己一点点装起来、调通的。底盘与结构件自己装配，电机驱动和传感器自己接线，
+            供电与走线自己规划，程序自己烧进去、反复改参数调到能动。它是我在嵌入式上的第一个完整闭环，
+            后面接 STM32 的时候，接线、调试、排查问题的路子都是从这里来的。
+          </p>
+          <p class="p-note">同类构型示意图 · 图源 Wikimedia Commons，CC BY-SA 3.0（实物未留影）</p>
+        </div>
+      </article>
+
       <div class="project-text">
         <div class="body">
-          <div class="p-meta"><span class="n">04</span><span class="kind">本页</span></div>
+          <div class="p-meta"><span class="n">05</span><span class="kind">本页</span></div>
           <h3>这个自我介绍页</h3>
           <p class="desc">
             你现在看的这一页。原生 HTML / CSS / JS，不套框架、不引组件库，只用了 GSAP 做首屏入场和微交互。

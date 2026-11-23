@@ -21,6 +21,8 @@
 
 一纸千年原本是离线单文件课程，这里把它放到 `yizi/` 下，所以在线上也能直接上课。
 
+「Arduino 机器车」是实物作品，没有可点的体验链接，页面上只放一张同类构型示意图（图源 Wikimedia Commons，CC BY-SA 3.0），图注里已注明是示意图。
+
 ## 目录结构
 
 ```
@@ -28,10 +30,11 @@ self-intro/
 ├── index.html            # 主页（单页，含响应式与打印样式）
 ├── assets/
 │   └── gsap.min.js       # GSAP 3.13，本地引入，不依赖 CDN
-├── shots/                # 三个项目的真实首屏截图
-│   ├── camp.png
-│   ├── yizi.png
-│   └── nailong.png
+├── shots/                # 项目配图（WebP，已压到约 93KB/张）
+│   ├── camp.webp         # 创想空间首屏
+│   ├── yizi.webp         # 一纸千年封面
+│   ├── nailong.webp      # 奶龙网站首屏
+│   └── robotcar.webp     # Arduino 机器车（示意图）
 ├── yizi/
 │   └── index.html        # 一纸千年互动课（单文件，可在线体验）
 └── README.md
@@ -50,7 +53,7 @@ python -m http.server 8000
 
 - **首屏入场用纯 CSS `@keyframes`**：不依赖脚本、不依赖网络，任何情况下都能播完，不会出现空白首屏。
 - **GSAP 本地引入**（`assets/gsap.min.js`），只用于「正在准备」区块的数字落位，属于非关键增强：脚本不加载时页面依然完整可读。
-- **响应式**在 1440 / 1024 / 768 / 390 四个宽度实测，均无横向溢出。
+- **响应式**在 1440 / 1180 / 1024 / 860 / 768 / 390 六个宽度实测，均无横向溢出。
 - 已适配 `prefers-reduced-motion`：开启减少动效时所有动画停止，内容直接呈现。
 - 版式遵循 `design-taste-frontend`（taste-skill 2.5.1）的原则：一屏一区块、左右对齐、真实截图、hover 微动效、不做滚动渐显。
 - 附打印样式，便于导出 PDF 或截图放进报名材料。
